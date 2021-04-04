@@ -16,5 +16,5 @@ spec:
   project: default
   source:
     path: manifest
-    repoURL: git@github.com:jiliangchen/k8s-sample.git
+    repoURL: https://github.com/wy-saffi/k8s-demo.git
     targetRevision: HEAD
