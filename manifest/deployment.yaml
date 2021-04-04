@@ -5,7 +5,7 @@ metadata:
   labels:
    app: sample-java
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: sample-java2
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: sample-java
-        image: chenjlsmm/java-demo:169bedc762d1d63c502ddc2064ffa14f596fcbd7
+        image: chenjlsmm/java-demo:dcd8ae8e631f0a793ec89b45a52675b6dd65443a
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
