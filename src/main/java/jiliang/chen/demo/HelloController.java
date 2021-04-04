@@ -8,13 +8,13 @@ public class HelloController {
 
 	@RequestMapping("/")
 	public String index() {
-		System.out.println("-----xxx----");
-		return "Greetings from Spring Boot! updated by argocd 20210403";
+		System.out.println("---------");
+		return "Greetings from Spring Boot! updated by argocd 20210404";
 	}
 
     @RequestMapping("/hello")
 	public String hello() {
-		System.out.println("-----xxx----");
+		System.out.println("--------");
 		return "hello for eks cicd";
 	}
 
