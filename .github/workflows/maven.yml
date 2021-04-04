@@ -24,6 +24,34 @@ jobs:
       run: mvn clean install
 
     - name: Publish to Docker Hub
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2
+    - name: Genereate deplotment file
+      run: |
+        echo "-------"
+        echo "GITHUB_SHA:$GITHUB_SHA"
+        sed --version
+        ls -la
+        cat ./manifest-template/deployment.yaml
+        cat ./manifest/deployment.yaml
+        sed "s/GITHUB_SHA/$GITHUB_SHA/g" ./manifest-template/deployment.yaml > ./manifest/deployment.yaml
+        cat ./manifest/deployment.yaml|grep $GITHUB_SHA
+        
+    - name: Commit files
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git commit -am "Bump docker tag"
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
       uses: docker/build-push-action@v1     
       with:       
         username: ${{ secrets.DOCKER_HUB_USERNAME }} 
