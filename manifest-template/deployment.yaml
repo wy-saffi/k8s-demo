@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample-java
+  labels:
+   app: sample-java
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sample-java2
+  template:
+    metadata:
+      labels:
+        app: sample-java2
+    spec:
+      containers:
+      - name: sample-java
+        image: chenjlsmm/java-demo:GITHUB_SHA
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+          protocol: TCP
