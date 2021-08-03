@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: sample-java
-        image: wyraku/java-demo:7f22386d5ad8d74df013db82cacb704c43fb3b38
+        image: wyraku/java-demo:42b3ea96504d710feec0a6bbd5d49ba528b98893
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
